@@ -1,0 +1,26 @@
+root: true
+
+parser: babel-eslint
+
+extends: [standard, standard-react]
+plugins: [babel, react]
+
+globals:
+  describe: true
+  expect: true
+  it: true
+  beforeEach: true
+  
+env:
+  browser: true
+  es6: true
+  node: true
+
+ecmaFeatures:
+  jsx: true
+  modules: true
+
+rules:
+  semi: [2, 'never']
+  no-console: 'error'
+  react/jsx-no-bind: [2, { allowArrowFunctions: true }]

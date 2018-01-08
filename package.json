@@ -1,0 +1,102 @@
+{
+  "name": "react-map-array",
+  "version": "0.1.0",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "jsnext:main": "es/index.js",
+  "unpkg": "dist/react-map-array.min.js",
+  "files": [
+    "src",
+    "dist",
+    "lib"
+  ],
+  "scripts": {
+    "clean": "rimraf lib coverage",
+    "lint": "eslint -c .eslintrc ./src",
+    "lint:fix": "npm run lint -- --fix",
+    "test": "mocha -R spec --compilers js:babel-core/register ./tests/setup.js ./tests/**/*.spec.js",
+    "test:cov": "babel-node $(npm bin)/isparta cover --report lcov ./node_modules/mocha/bin/_mocha -- ./tests --recursive",
+    "build:example": "cp dist/react-map-array.min.js examples/basic",
+    "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib",
+    "build:es": "cross-env BABEL_ENV=es babel src --out-dir es",
+    "build:umd": "cross-env NODE_ENV=development BABEL_ENV=commonjs webpack src/index.js dist/react-map-array.js --config webpack.config.js",
+    "build:umd:min": "cross-env NODE_ENV=production BABEL_ENV=commonjs webpack -p src/index.js dist/react-map-array.min.js --config webpack.config.js",
+    "build": "npm run clean && npm run build:commonjs && npm run build:umd && npm run build:umd:min && npm run build:example",
+    "serve": "npm run build && serve examples/basic",
+    "watch:umd": "npm run build:umd -- --progress --colors --watch",
+    "watch:lib": "npm run build:lib -- --watch",
+    "watch:es": "npm run build:es -- --watch",
+    "watch": "npm run watch:es",
+    "prepare": "npm run clean && npm run lint:fix && npm run build && npm run test:cov",
+    "prepush": "npm run lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jboxman/react-map-array.git"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "Jason Boxman",
+  "contributors": [
+    {
+      "name": "Jason Boxman",
+      "email": "jasonb@edseek.com"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jboxman/react-map-array/issues"
+  },
+  "homepage": "https://github.com/jboxman/react-map-array",
+  "dependencies": {
+    "prop-types": "^15.6.0"
+  },
+  "peerDependencies": {
+    "react": "^16.2.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.3",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-react-transform": "^3.0.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-dev-warning": "^0.1.1",
+    "babel-plugin-transform-object-assign": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-react-constant-elements": "^6.23.0",
+    "babel-plugin-transform-react-inline-elements": "^6.22.0",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.12",
+    "babel-plugin-transform-replace-object-assign": "^0.2.1",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-1": "^6.24.1",
+    "babel-runtime": "^6.26.0",
+    "chai": "^4.1.2",
+    "chai-enzyme": "^1.0.0-beta.0",
+    "cross-env": "^5.1.3",
+    "enzyme": "^3.2.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "eslint": "^4.13.1",
+    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-config-standard-react": "^5.0.0",
+    "eslint-plugin-babel": "^4.1.2",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-react": "^7.5.1",
+    "eslint-plugin-standard": "^3.0.1",
+    "isparta": "^4.0.0",
+    "jsdom": "^11.5.1",
+    "mocha": "^4.0.1",
+    "prop-types": "^15.6.0",
+    "react": "^16.2.0",
+    "react-addons-test-utils": "^15.6.2",
+    "react-dom": "^16.2.0",
+    "rimraf": "^2.6.2",
+    "serve": "^6.4.3",
+    "sinon": "^4.1.3",
+    "webpack": "^3.10.0"
+  }
+}
