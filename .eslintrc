@@ -21,6 +21,7 @@ ecmaFeatures:
   modules: true
 
 rules:
-  semi: [2, 'never']
+  semi: [2, 'always']
   no-console: 'error'
   react/jsx-no-bind: [2, { allowArrowFunctions: true }]
+  space-before-function-paren: [2, 'never']

@@ -20,10 +20,10 @@ export default class MapArray extends React.Component {
     const {
       from,
       children,
-      map,
+      map
     } = this.props;
 
-    const child = React.Children.only(children)
+    const child = React.Children.only(children);
     const mapped = from.map((item, key) => (
       React.cloneElement(child, {
         key,
